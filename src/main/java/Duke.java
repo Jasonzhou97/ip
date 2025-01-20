@@ -14,32 +14,57 @@ public class Duke {
         Scanner sc = new Scanner(System.in);
         String input;
         TaskList tasks = new TaskList();
-        while(!(input=sc.nextLine()).equalsIgnoreCase("bye")){
-            String task = input;
-            if(task.equals("list")){
-                tasks.list();
-            }
-            else if(task.equals("bye")){
+        while(true){
+            input = sc.nextLine().trim();
+            if(input.equalsIgnoreCase("bye")){
                 break;
             }
-            else if (input.startsWith("mark")){
-                String[] arr = input.split(" ");
-                int index = Integer.parseInt(arr[1]);
-                Task curTask = tasks.array()[index-1];
-                curTask.markDone();
-            }
-            else if (input.startsWith("unmark")){
-                String[] arr = input.split(" ");
-                int index = Integer.parseInt(arr[1]);
-                Task curTask = tasks.array()[index-1];
-                curTask.unmark();
-            }
             else{
-                tasks.addTask(task);
+                processCommand(input,tasks);
             }
+
         }
         System.out.println("Bye. Hope to see you again soon!");
 
 
+    }
+
+    private static void processCommand(String input,TaskList tasks){
+        String[] parts = input.split(" ",2);
+        String command = parts[0].toLowerCase();
+
+        switch(command){
+            case "list":
+                tasks.list();
+                break;
+            case "todo":
+                tasks.addTask(new ToDo(parts[1]));
+                break;
+
+            case "deadline":
+                String[] dlParts = parts[1].split("/by",2);
+                tasks.addTask(new Deadline(dlParts[0],dlParts[1]));
+                break;
+
+            case "event":
+                String[] evParts = parts[1].split(" /from ", 2);
+                String[] timeParts = evParts[1].split(" /to ", 2);
+                tasks.addTask(new Event(evParts[0], timeParts[0], timeParts[1]));
+                break;
+
+            case "mark":
+                int index = Integer.parseInt(parts[1])-1;
+                Task curTask = tasks.array()[index];
+                curTask.markDone();
+                break;
+
+            case "unmark":
+                int unmarkIndex = Integer.parseInt(parts[1])-1;
+                Task curTaskUnmark = tasks.array()[unmarkIndex];
+                curTaskUnmark.unmark();
+                break;
+
+
+        }
     }
 }
