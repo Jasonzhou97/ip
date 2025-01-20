@@ -22,6 +22,18 @@ public class Duke {
             else if(task.equals("bye")){
                 break;
             }
+            else if (input.startsWith("mark")){
+                String[] arr = input.split(" ");
+                int index = Integer.parseInt(arr[1]);
+                Task curTask = tasks.array()[index-1];
+                curTask.markDone();
+            }
+            else if (input.startsWith("unmark")){
+                String[] arr = input.split(" ");
+                int index = Integer.parseInt(arr[1]);
+                Task curTask = tasks.array()[index-1];
+                curTask.unmark();
+            }
             else{
                 tasks.addTask(task);
             }

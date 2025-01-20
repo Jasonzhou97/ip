@@ -13,9 +13,12 @@ public class TaskList {
     }
     public void list(){
         for(int i=0;i<num_of_tasks;i++){
-            String t = tasks[i].getTitle();
+            Task t = tasks[i];
             int index = i+1;
-            System.out.println(index+": "+t);
+            System.out.println(index+". "+t.print());
         }
+    }
+    public Task[] array(){
+        return this.tasks;
     }
 }
