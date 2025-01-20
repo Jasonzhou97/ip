@@ -13,8 +13,18 @@ public class Duke {
         System.out.println("What can I do for you?");
         Scanner sc = new Scanner(System.in);
         String input;
+        TaskList tasks = new TaskList();
         while(!(input=sc.nextLine()).equalsIgnoreCase("bye")){
-            System.out.println(input);
+            String task = input;
+            if(task.equals("list")){
+                tasks.list();
+            }
+            else if(task.equals("bye")){
+                break;
+            }
+            else{
+                tasks.addTask(task);
+            }
         }
         System.out.println("Bye. Hope to see you again soon!");
 
