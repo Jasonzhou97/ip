@@ -22,7 +22,7 @@ public class Deadline extends Task {
      * @return end date time
      */
     public String getEndDate(){
-        return "(by: " + endDate +")";
+        return "(by:" + endDate +")";
     }
     @Override
     public String print(){
