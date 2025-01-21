@@ -1,44 +1,16 @@
 Hello! I'm Lebum
 What can I do for you?
 Got it! I've added this task
-[T] [ ] borrow book
+[T] [ ] read book
 Now you have 1 tasks in the list.
-Got it! I've added this task
-[D] [ ] return book (by: Sunday)
-Now you have 2 tasks in the list.
-Got it! I've added this task
-[E] [ ] team meeting (from: Monday 2pm to: 4pm)
-Now you have 3 tasks in the list.
-Got it! I've added this task
-[T] [ ] read chapter 3
-Now you have 4 tasks in the list.
-Got it! I've added this task
-[E] [ ] orientation (from: Friday 9am to: 6pm)
-Now you have 5 tasks in the list.
-1. [T] [ ] borrow book
-2. [D] [ ] return book (by: Sunday)
-3. [E] [ ] team meeting (from: Monday 2pm to: 4pm)
-4. [T] [ ] read chapter 3
-5. [E] [ ] orientation (from: Friday 9am to: 6pm)
+1. [T] [ ] read book
 Nice! I've marked this task as done:
-[T] [X] borrow book
-Nice! I've marked this task as done:
-[E] [X] team meeting (from: Monday 2pm to: 4pm)
-1. [T] [X] borrow book
-2. [D] [ ] return book (by: Sunday)
-3. [E] [X] team meeting (from: Monday 2pm to: 4pm)
-4. [T] [ ] read chapter 3
-5. [E] [ ] orientation (from: Friday 9am to: 6pm)
+[T] [X] read book
+1. [T] [X] read book
 OK, I've marked this task as not done yet:
-[T] [ ] borrow book
-OOPS!!! The task number must be a number.
+[T] [ ] read book
+1. [T] [ ] read book
 OOPS!!! The description of a todo cannot be empty, please fill in the description!
-OOPS!!! Please provide a deadline using /by.
-OOPS!!! Please provide event end time using /to.
-OOPS!!! Please provide a task number to mark.
-1. [T] [ ] borrow book
-2. [D] [ ] return book (by: Sunday)
-3. [E] [X] team meeting (from: Monday 2pm to: 4pm)
-4. [T] [ ] read chapter 3
-5. [E] [ ] orientation (from: Friday 9am to: 6pm)
+OOPS!!! The description of a deadline cannot be empty, please fill in the description!
+OOPS!!! The description of an event cannot be empty, please fill in the description!
 Bye. Hope to see you again soon!
