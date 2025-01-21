@@ -37,6 +37,20 @@ public class Duke {
             case "list":
                 tasks.list();
                 break;
+
+            case "delete":
+                try{
+                    if(parts.length < 2){
+                        throw new DukeException("OOPS!!! You did not specify an index to delete, please specify an index!");
+                    }
+                    int index = Integer.parseInt(parts[1]);
+                    tasks.delete(index-1);
+
+                }
+                catch (ArrayIndexOutOfBoundsException e){
+                    throw new DukeException("OOPS!!! You did not specify an index to delete, please specify an index!");
+                }
+                break;
             case "todo":
                 try {
                     if (parts.length < 2) {
@@ -92,7 +106,7 @@ public class Duke {
                         throw new DukeException("OOPS!!! Please provide a task number to mark.");
                     }
                     int index = Integer.parseInt(parts[1]) - 1;
-                    Task curTask = tasks.array()[index];
+                    Task curTask = tasks.array().get(index);
                     curTask.markDone();
                 }
                 catch(NumberFormatException e){
@@ -110,7 +124,7 @@ public class Duke {
                         throw new DukeException("OOPS!!! Please provide a task number to unmark.");
                     }
                     int unmarkIndex = Integer.parseInt(parts[1]) - 1;
-                    Task curTaskUnmark = tasks.array()[unmarkIndex];
+                    Task curTaskUnmark = tasks.array().get(unmarkIndex);
                     curTaskUnmark.unmark();
                 }
                 catch (NumberFormatException e) {
