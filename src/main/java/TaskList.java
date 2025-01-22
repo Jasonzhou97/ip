@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 public class TaskList {
+    /**
+     * an arraylist to store all tasks
+     */
     private ArrayList<Task> tasks;
 
     private int num_of_tasks;
@@ -9,6 +12,10 @@ public class TaskList {
         this.num_of_tasks = 0;
     }
 
+    /**
+     *
+     * @param task to add task to arraylist
+     */
     public void addTask(Task task){
         tasks.add(task);
         num_of_tasks+=1;
@@ -16,6 +23,10 @@ public class TaskList {
         System.out.println("Now you have "+num_of_tasks+" tasks in the list.");
 
     }
+
+    /**
+     * to print all tasks in list with its index
+     */
     public void list(){
         for(int i=0;i<num_of_tasks;i++){
             Task t = tasks.get(i);
@@ -23,11 +34,21 @@ public class TaskList {
             System.out.println(index+". "+t.print());
         }
     }
+
+    /**
+     *
+     * @return the arraylist of tasks
+     */
     public ArrayList<Task> array(){
 
         return this.tasks;
     }
 
+    /**
+     *
+     * @param index the index of the task to delete
+     * @throws DukeException if index out of bounds 
+     */
     public void delete(int index) throws DukeException{
         if(index>num_of_tasks || index<0){
             throw new DukeException("Oops you entered an invalid index!");

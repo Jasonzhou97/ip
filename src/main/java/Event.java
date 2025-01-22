@@ -13,10 +13,18 @@ public class Event extends Task{
         this.endDate = endDate;
     }
 
+    /**
+     *
+     * @return the string that contains start and end date
+     */
     public String getPeriod(){
         return " (from: "+startDate+" to: "+endDate+")";
     }
 
+    /**
+     *
+     * @return the string that will be printed if list is called
+     */
     @Override
     public String print(){
         return "[E]" + " "+ this.getStatus() + " " + this.getTitle() + this.getPeriod();

@@ -9,6 +9,7 @@ public class Duke {
         Scanner sc = new Scanner(System.in);
         String input;
         TaskList tasks = new TaskList();
+
         while(true){
             try {
                 input = sc.nextLine().trim();
@@ -28,6 +29,13 @@ public class Duke {
         System.out.println("Bye. Hope to see you again soon!");
 
     }
+
+    /**
+     *
+     * @param input the input that user keys in
+     * @param tasks the arraylist that will store the tasks
+     * @throws DukeException handles all exceptions specific to duke
+     */
 
     private static void processCommand(String input,TaskList tasks) throws DukeException {
         String[] parts = input.split(" ",2);
