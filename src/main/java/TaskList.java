@@ -47,7 +47,7 @@ public class TaskList {
     /**
      *
      * @param index the index of the task to delete
-     * @throws DukeException if index out of bounds 
+     * @throws DukeException if index out of bounds
      */
     public void delete(int index) throws DukeException{
         if(index>num_of_tasks || index<0){

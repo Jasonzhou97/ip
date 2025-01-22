@@ -34,13 +34,16 @@ public class Duke {
      *
      * @param input the input that user keys in
      * @param tasks the arraylist that will store the tasks
-     * @throws DukeException handles all exceptions specific to duke
+     * @throws DukeException when exceptions are specific to Duke
      */
 
     private static void processCommand(String input,TaskList tasks) throws DukeException {
         String[] parts = input.split(" ",2);
         String command = parts[0].toLowerCase();
 
+        /**
+         * handles different commands and exceptions handling
+         */
         switch(command){
             case "list":
                 tasks.list();
