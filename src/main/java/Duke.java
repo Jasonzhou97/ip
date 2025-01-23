@@ -8,15 +8,15 @@ public class Duke {
         System.out.println("What can I do for you?");
         Scanner sc = new Scanner(System.in);
         String input;
-        TaskList tasks = new TaskList();
-
+        Storage storage = new Storage("./data/tasks.txt");
+        TaskList tasks = storage.loadTasks();
         while(true){
             try {
                 input = sc.nextLine().trim();
                 if (input.equalsIgnoreCase("bye")) {
                     break;
                 }
-                processCommand(input, tasks);
+                processCommand(input, tasks,storage);
             }
             catch (DukeException e){
                 System.out.println(e.getMessage());
@@ -37,7 +37,7 @@ public class Duke {
      * @throws DukeException when exceptions are specific to Duke
      */
 
-    private static void processCommand(String input,TaskList tasks) throws DukeException {
+    private static void processCommand(String input,TaskList tasks,Storage storage) throws DukeException {
         String[] parts = input.split(" ",2);
         String command = parts[0].toLowerCase();
 
@@ -56,7 +56,7 @@ public class Duke {
                     }
                     int index = Integer.parseInt(parts[1]);
                     tasks.delete(index-1);
-
+                    storage.saveToFile(tasks);
                 }
                 catch (ArrayIndexOutOfBoundsException e){
                     throw new DukeException("OOPS!!! You did not specify an index to delete, please specify an index!");
@@ -68,6 +68,7 @@ public class Duke {
                         throw new DukeException("OOPS!!! The description of a todo cannot be empty, please fill in the description!");
                     }
                     tasks.addTask(new ToDo(parts[1]));
+                    storage.saveToFile(tasks);
                 }
 
                 catch(ArrayIndexOutOfBoundsException e){
@@ -86,6 +87,7 @@ public class Duke {
                         throw new DukeException("OOPS!!! Please provide a deadline using /by.");
                     }
                     tasks.addTask(new Deadline(dlParts[0], dlParts[1]));
+                    storage.saveToFile(tasks);
                 }
                 catch(ArrayIndexOutOfBoundsException e){
                     throw new DukeException("OOPS!!! Invalid deadline format. Use: deadline <description> /by <time>");
@@ -106,6 +108,7 @@ public class Duke {
                         throw new DukeException("OOPS!!! Please provide event end time using /to.");
                     }
                     tasks.addTask(new Event(evParts[0], timeParts[0], timeParts[1]));
+                    storage.saveToFile(tasks);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     throw new DukeException("OOPS!!! Invalid event format. Use: event <description> /from <start-time> /to <end-time>");
                 }
@@ -119,6 +122,7 @@ public class Duke {
                     int index = Integer.parseInt(parts[1]) - 1;
                     Task curTask = tasks.array().get(index);
                     curTask.markDone();
+                    storage.saveToFile(tasks);
                 }
                 catch(NumberFormatException e){
                     throw new DukeException("OOPS!!! The task number must be a number.");
@@ -137,6 +141,7 @@ public class Duke {
                     int unmarkIndex = Integer.parseInt(parts[1]) - 1;
                     Task curTaskUnmark = tasks.array().get(unmarkIndex);
                     curTaskUnmark.unmark();
+                    storage.saveToFile(tasks);
                 }
                 catch (NumberFormatException e) {
                     throw new DukeException("OOPS!!! The task number must be a number.");
