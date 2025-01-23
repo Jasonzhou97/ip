@@ -21,7 +21,15 @@ public class TaskList {
         num_of_tasks+=1;
         System.out.println("Got it! I've added this task\n"+task.print());
         System.out.println("Now you have "+num_of_tasks+" tasks in the list.");
+    }
 
+    /**
+     *
+     * @param task parsed from loading from script, add tasks without printing output
+     */
+    public void addInitialTask(Task task){
+        tasks.add(task);
+        num_of_tasks+=1;
     }
 
     /**
@@ -40,7 +48,6 @@ public class TaskList {
      * @return the arraylist of tasks
      */
     public ArrayList<Task> array(){
-
         return this.tasks;
     }
 

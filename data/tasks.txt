@@ -1,0 +1,4 @@
+D | [ ] | do homework  |  no idea :-p
+D | [X] | return book  |  Sunday
+E | [ ] | project meeting | Mon 2pm | 4pm
+T | [X] | read

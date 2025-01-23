@@ -24,6 +24,10 @@ public class Deadline extends Task {
     public String getEndDate(){
         return "(by:" + endDate +")";
     }
+
+    public String getEndDateFile(){
+        return endDate;
+    }
     @Override
     public String print(){
         return "[D]" + " "+ this.getStatus() + " " + this.getTitle() + this.getEndDate();

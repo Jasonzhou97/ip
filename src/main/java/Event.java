@@ -30,4 +30,12 @@ public class Event extends Task{
         return "[E]" + " "+ this.getStatus() + " " + this.getTitle() + this.getPeriod();
     }
 
+    public String getStartDate(){
+        return startDate;
+    }
+
+    public String getEndDate(){
+        return endDate;
+    }
+
 }
