@@ -1,12 +1,12 @@
+package duke.main;
+
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
-
+import duke.task.*;
+import duke.exception.DukeException;
 public class Storage {
     //store the file path to the txt file
     private String path;

@@ -1,3 +1,4 @@
+package duke.task;
 public class ToDo extends Task{
     private String title;
     private Boolean isDone;

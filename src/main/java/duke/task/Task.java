@@ -1,3 +1,4 @@
+package duke.task;
 public class Task {
     /**
      * basic variables every task and subclasses should have

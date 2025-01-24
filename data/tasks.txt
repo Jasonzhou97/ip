@@ -10,5 +10,6 @@ D | [ ] | return book  | 2nd of December 2019, 3:00 pm
 E | [ ] | project meeting | Mon 2pm | 4pm
 T | [ ] | read book
 E | [ ] | project meeting | Mon 2pm | 4pm
-D | [X] | return book  |  Sunday
 T | [ ] | read harro
+T | [X] | read book
+E | [ ] | project meeting | Mon 2pm | 4pm

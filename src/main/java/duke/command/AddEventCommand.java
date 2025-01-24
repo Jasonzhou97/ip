@@ -1,3 +1,8 @@
+package duke.command;
+
+import duke.exception.DukeException;
+import duke.main.*;
+import duke.task.Event;
 public class AddEventCommand extends Command{
 
     private String title;

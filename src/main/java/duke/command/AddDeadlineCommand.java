@@ -1,3 +1,8 @@
+package duke.command;
+import duke.exception.DukeException;
+import duke.task.Deadline;
+import duke.main.*;
+
 public class AddDeadlineCommand extends Command{
     private String title;
     private String[] parts;

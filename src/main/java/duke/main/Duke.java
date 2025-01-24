@@ -1,6 +1,7 @@
-import java.lang.constant.DynamicCallSiteDesc;
-import java.text.ParseException;
-import java.util.Scanner;
+package duke.main;
+
+import duke.exception.DukeException;
+import duke.command.*;
 
 public class Duke {
     private Storage storage;
@@ -34,6 +35,7 @@ public class Duke {
         }
         catch (DukeException e) {
             ui.showErrorMessage(e);
+            
         }
 
     }
