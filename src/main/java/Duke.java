@@ -1,4 +1,5 @@
 import java.lang.constant.DynamicCallSiteDesc;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Duke {
@@ -37,7 +38,7 @@ public class Duke {
      * @throws DukeException when exceptions are specific to Duke
      */
 
-    private static void processCommand(String input,TaskList tasks,Storage storage) throws DukeException {
+    private static void processCommand(String input,TaskList tasks,Storage storage) throws DukeException,ParseException {
         String[] parts = input.split(" ",2);
         String command = parts[0].toLowerCase();
 
@@ -89,8 +90,11 @@ public class Duke {
                     tasks.addTask(new Deadline(dlParts[0], dlParts[1]));
                     storage.saveToFile(tasks);
                 }
-                catch(ArrayIndexOutOfBoundsException e){
+                catch (ArrayIndexOutOfBoundsException e){
                     throw new DukeException("OOPS!!! Invalid deadline format. Use: deadline <description> /by <time>");
+                }
+                catch (DukeException e) {
+                    throw new DukeException("Invalid date format. Use yyyy-MM-dd or yyyy-MM-dd HH:mm");
                 }
                 break;
 

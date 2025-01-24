@@ -2,13 +2,25 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Storage {
+    //store the file path to the txt file
     private String path;
+
+
+
     public Storage(String path){
         this.path = path;
     }
+
+    /**
+     *
+     * @param tasks the arraylists of tasks to save to txt file, before formatting
+     */
 
     public void saveToFile(TaskList tasks){
         try {
@@ -23,6 +35,12 @@ public class Storage {
             System.out.println("File not created ");
         }
     }
+
+    /**
+     *
+     * @param task to format accroding to txt file
+     * @return the string of the formatted task
+     */
     public String formatTask(Task task){
         String type = task instanceof Deadline ? "D"
                     : task instanceof ToDo ? "T" : "E";
@@ -36,6 +54,11 @@ public class Storage {
         }
         return basic+"\n";
     }
+
+    /**
+     *
+     * @return the list of tasks parsed from the txt file to be loaded when user runs for the first time
+     */
     public TaskList loadTasks(){
         TaskList tasks = new TaskList();
         try {
@@ -65,7 +88,14 @@ public class Storage {
         return tasks;
     }
 
-    public Task parseTasks(String line) throws DukeException{
+    /**
+     *
+     * @param line current line of txt file it is parsing
+     * @return the task that the current txt line represents
+     * @throws DukeException if tasks in txt file cant be parsed
+     */
+
+    public Task parseTasks(String line) throws DukeException {
         String[] parts = line.split(" \\| ");
 
             if (parts.length < 3) {
