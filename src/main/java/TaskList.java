@@ -31,7 +31,9 @@ public class TaskList {
         tasks.add(task);
         num_of_tasks+=1;
     }
-
+    public int getNum_of_tasks() {
+        return num_of_tasks;
+    }
     /**
      * to print all tasks in list with its index
      */
