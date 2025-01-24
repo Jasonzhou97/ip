@@ -5,29 +5,30 @@ import java.util.Scanner;
 public class Duke {
 
     public static void main(String[] args) {
-        System.out.println("Hello! I'm Lebum");
-        System.out.println("What can I do for you?");
+        Ui ui = new Ui();
+        ui.showWelcomeMessage();
+
         Scanner sc = new Scanner(System.in);
         String input;
         Storage storage = new Storage("./data/tasks.txt");
         TaskList tasks = storage.loadTasks();
         while(true){
             try {
-                input = sc.nextLine().trim();
+                input = ui.readCommand();
                 if (input.equalsIgnoreCase("bye")) {
                     break;
                 }
                 processCommand(input, tasks,storage);
             }
             catch (DukeException e){
-                System.out.println(e.getMessage());
+                ui.showErrorMessage(e);
             }
             catch (Exception e){
-                System.out.println("OOPS!!! Something went wrong "+e.getMessage());
+                ui.showErrorMessage(e);
             }
 
         }
-        System.out.println("Bye. Hope to see you again soon!");
+            ui.showByeMessage();
 
     }
 

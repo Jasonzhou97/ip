@@ -5,3 +5,4 @@ T | [X] | read
 D | [ ] | return book  |  Sunday
 D | [ ] | return book  | 2nd of December 2019, 6:00 pm
 D | [ ] | return book  | 31st of December 2019, 1:00 pm
+T | [X] | buy condom
