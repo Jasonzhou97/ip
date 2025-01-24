@@ -25,4 +25,8 @@ public class Ui {
         System.out.println("OOPS!!! Something went wrong!");
     }
 
+    public void showErrorMessage(String solution){
+        System.out.println("OOPS!!! Something went wrong! "+ solution);
+    }
+
 }
