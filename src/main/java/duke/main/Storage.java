@@ -7,7 +7,12 @@ import java.io.IOException;
 import java.util.Scanner;
 import duke.task.*;
 import duke.exception.DukeException;
+
+/**
+ * Class to load tasks and save tasks to txt file
+ */
 public class Storage {
+
     //store the file path to the txt file
     private String path;
 

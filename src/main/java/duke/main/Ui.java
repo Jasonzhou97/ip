@@ -1,5 +1,9 @@
 package duke.main;
 import java.util.Scanner;
+
+/**
+ * A User interface class to interact with users and read their commands
+ */
 public class Ui {
     private Scanner sc;
 

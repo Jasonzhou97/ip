@@ -3,6 +3,10 @@ package duke.command;
 import duke.exception.DukeException;
 import duke.main.*;
 import duke.task.Event;
+
+/**
+ * The command to add event
+ */
 public class AddEventCommand extends Command{
 
     private String title;

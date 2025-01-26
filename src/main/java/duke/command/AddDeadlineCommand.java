@@ -3,14 +3,30 @@ import duke.exception.DukeException;
 import duke.task.Deadline;
 import duke.main.*;
 
+/**
+ *
+ */
 public class AddDeadlineCommand extends Command{
     private String title;
     private String[] parts;
+
+    /**
+     *
+     * @param title The name of the instruction
+     */
     public AddDeadlineCommand(String title) {
         this.title = title;
         parts = title.split(" ",2);
     }
 
+    /**
+     *
+     * @param tasks The list of tasks to add to
+     * @param storage The storage to save to
+     * @param Ui The Ui user interacts with
+     * @throws DukeException Thrown when dates are invalid
+     * @throws ArrayIndexOutOfBoundsException Thrown when array length is not as expected
+     */
     public void execute (TaskList tasks,Storage storage, Ui Ui) throws DukeException,ArrayIndexOutOfBoundsException {
         try {
             if (parts.length < 2) {

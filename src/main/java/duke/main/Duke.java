@@ -3,6 +3,9 @@ package duke.main;
 import duke.exception.DukeException;
 import duke.command.*;
 
+/**
+ * Main class to run when user starts program
+ */
 public class Duke {
     private Storage storage;
     private TaskList tasks;

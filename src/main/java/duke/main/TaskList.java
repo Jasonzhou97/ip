@@ -3,6 +3,10 @@ import duke.task.Task;
 import java.util.ArrayList;
 import duke.exception.DukeException;
 
+/**
+ * A class to represent the list of tasks
+ */
+
 public class TaskList {
     /**
      * an arraylist to store all tasks
