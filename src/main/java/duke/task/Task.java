@@ -31,6 +31,9 @@ public class Task {
         return isDone ? "[X]" : "[ ]";
     }
 
+    public Boolean getIsDone(){
+        return isDone;
+    }
     /**
      * method to mark task as done along with printing the details
      */
