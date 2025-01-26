@@ -8,8 +8,10 @@ T | [ ] | buy condom
 T | [ ] | read stuff
 D | [ ] | return book  | 2nd of December 2019, 3:00 pm
 E | [ ] | project meeting | Mon 2pm | 4pm
-T | [ ] | read book
-E | [ ] | project meeting | Mon 2pm | 4pm
+T | [X] | read book
+E | [X] | project meeting | Mon 2pm | 4pm
 T | [ ] | read harro
 T | [X] | read book
 E | [ ] | project meeting | Mon 2pm | 4pm
+T | [X] | read
+T | [ ] | read

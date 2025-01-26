@@ -25,17 +25,20 @@ public class Duke {
         ui.showWelcomeMessage();
         boolean isExit = false;
 
-        try {
+
             while (isExit==false) {
-                String cmd = ui.readCommand();
-                Command c = Parser.parse(cmd);
-                c.execute(tasks, storage, ui);
-                isExit = c.isExit();
+                try {
+                    String cmd = ui.readCommand();
+                    Command c = Parser.parse(cmd);
+                    c.execute(tasks, storage, ui);
+                    isExit = c.isExit();
+                }
+                catch (DukeException e) {
+                    ui.showErrorMessage(e);
             }
-        }
-        catch (DukeException e) {
-            ui.showErrorMessage(e);
-            
+
+
+
         }
 
     }

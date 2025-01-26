@@ -22,17 +22,20 @@ public class Storage {
      * @param tasks the arraylists of tasks to save to txt file, before formatting
      */
 
-    public void saveToFile(TaskList tasks){
+    public void saveToFile(TaskList tasks) {
         try {
+            // Create directories if they don't exist
+            File directory = new File("data");
+            directory.mkdirs();
+
+            // Create and write to file
             FileWriter fw = new FileWriter(path);
-            for(Task t : tasks.array()){
-                String formatted = formatTask(t);
-                fw.write(formatted);
+            for(Task t : tasks.array()) {
+                fw.write(formatTask(t));
             }
             fw.close();
-        }
-        catch (IOException e){
-            System.out.println("File not created ");
+        } catch (IOException e) {
+            System.out.println("Error saving to file: " + e.getMessage());
         }
     }
 

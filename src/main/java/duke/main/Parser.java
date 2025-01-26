@@ -34,12 +34,10 @@ public class Parser {
             case "bye":
                 return new ExitCommand();
             default:
-
-                System.out.println("OOPS I have no idea what that means :(");
+                throw new DukeException("OOPS I have no idea what that means :(");
 
 
         }
 
-        return null;
     }
 }
