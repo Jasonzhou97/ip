@@ -36,6 +36,9 @@ public class Parser {
 
             case "bye":
                 return new ExitCommand();
+
+            case "find":
+                return new FindCommand(parts);
             default:
                 throw new DukeException("OOPS I have no idea what that means :(");
 
