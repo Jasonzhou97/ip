@@ -3,7 +3,6 @@ import duke.exception.DukeException;
 import duke.main.*;
 
 public class DeleteCommand extends Command{
-
     private String[] parts;
 
     public DeleteCommand(String[] parts){

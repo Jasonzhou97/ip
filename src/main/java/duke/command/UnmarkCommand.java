@@ -2,8 +2,11 @@ package duke.command;
 import duke.exception.DukeException;
 import duke.main.*;
 import duke.task.Task;
-public class UnmarkCommand extends Command {
 
+/**
+ * To unmark tasks that users want to unmark
+ */
+public class UnmarkCommand extends Command {
     private int index;
     private String[] parts;
 

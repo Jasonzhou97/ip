@@ -3,7 +3,6 @@ import duke.exception.DukeException;
 import duke.main.*;
 import duke.task.Task;
 public class MarkCommand extends Command{
-
     private int index;
     private String[] parts;
 
