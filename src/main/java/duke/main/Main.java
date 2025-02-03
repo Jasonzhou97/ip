@@ -78,10 +78,10 @@ public class Main extends Application {
             showMessage("You: " + input);
         }
         try {
-            boolean canRun = duke.executeCommand(input);
-            if (canRun) {
+            String response = duke.executeCommand(input);
+            if (!response.equals("Oops")) {
                 showMessage("Success");
-
+                showMessage(response);
             }
             else {
                 showMessage("Error");

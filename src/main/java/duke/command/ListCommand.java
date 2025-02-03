@@ -11,5 +11,9 @@ public class ListCommand extends Command{
             list += index + ". " + t.print() + "\n";
         }
     }
+    @Override
+    public String showMessage() {
+        return this.list;
+    }
 
 }
