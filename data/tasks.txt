@@ -1,8 +1,8 @@
 D | [X] | return book  |  Sunday
-E | [ ] | project meeting | Mon 2pm | 4pm
+E | [X] | project meeting | Mon 2pm | 4pm
 T | [X] | read
 D | [ ] | return book  |  Sunday
-D | [X] | return book  | 2nd of December 2019, 6:00 pm
+D | [ ] | return book  | 2nd of December 2019, 6:00 pm
 D | [ ] | return book  | 31st of December 2019, 1:00 pm
 T | [ ] | buy condom
 T | [ ] | read stuff
@@ -18,3 +18,4 @@ T | [ ] | read
 T | [X] | list
 T | [ ] | read
 D | [X] | do homework  |  no idea :-p
+T | [ ] | return money

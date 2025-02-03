@@ -1,8 +1,6 @@
 package duke.main;
-
 import duke.exception.DukeException;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import duke.command.Command;
+
 
 /**
  * JavaFX main class that user interacts with
@@ -24,12 +22,12 @@ public class Main extends Application {
     private Button sendButton;
     private Scene scene;
     private Parser parser;
-    private Duke duke;
+    private Lebum lebum;
     private Ui ui;
 
     @Override
     public void start(Stage stage) {
-        duke = new Duke("data/tasks.txt");
+        lebum = new Lebum("data/tasks.txt");
         parser = new Parser();
         ui = new Ui();
 
@@ -61,7 +59,7 @@ public class Main extends Application {
         AnchorPane.setBottomAnchor(sendButton, 10.0);
 
         scene = new Scene(mainLayout, 400, 600);
-        stage.setTitle("Duke Chatbot");
+        stage.setTitle("Lebum Chatbot");
         stage.setScene(scene);
 
         // Set up event handlers
@@ -78,10 +76,10 @@ public class Main extends Application {
             showMessage("You: " + input);
         }
         try {
-            String response = duke.executeCommand(input);
+            String response = lebum.executeCommand(input);
             if (!response.equals("Oops")) {
-                showMessage("Success");
-                showMessage(response);
+                showMessage("Lebum: " + response);
+
             }
             else {
                 showMessage("Error");
@@ -90,7 +88,7 @@ public class Main extends Application {
         catch (DukeException e) {
             showMessage("Oops something went wrong");
         }
-
+        userInput.clear();
 
     }
     private void showMessage(String message) {

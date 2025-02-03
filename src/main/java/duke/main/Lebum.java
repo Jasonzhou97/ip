@@ -6,7 +6,7 @@ import duke.exception.DukeException;
 /**
  * Main class to run when user starts program
  */
-public class Duke {
+public class Lebum {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
@@ -17,7 +17,7 @@ public class Duke {
      * Main class that starts up
      * @param path the path to the txt file that loads and saves task
      */
-    public Duke(String path) {
+    public Lebum(String path) {
         ui = new Ui();
         storage = new Storage(path);
         try {
@@ -28,7 +28,7 @@ public class Duke {
         }
     }
     public static void main(String[] args) {
-        new Duke("data/tasks.txt").run();
+        new Lebum("data/tasks.txt").run();
 
     }
 
