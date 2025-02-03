@@ -1,7 +1,7 @@
 package duke.main;
-
+import duke.command.Command;
 import duke.exception.DukeException;
-import duke.command.*;
+
 
 /**
  * Main class to run when user starts program
@@ -10,7 +10,14 @@ public class Duke {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
-    public Duke (String path) {
+
+    private Parser parser;
+
+    /**
+     * Main class that starts up
+     * @param path the path to the txt file that loads and saves task
+     */
+    public Duke(String path) {
         ui = new Ui();
         storage = new Storage(path);
         try {
@@ -24,26 +31,39 @@ public class Duke {
         new Duke("data/tasks.txt").run();
 
     }
-    public void run () {
+
+    /**
+     * Load the UI
+     */
+    public void run() {
         ui.showWelcomeMessage();
         boolean isExit = false;
 
 
-            while (isExit==false) {
-                try {
-                    String cmd = ui.readCommand();
-                    Command c = Parser.parse(cmd);
-                    c.execute(tasks, storage, ui);
-                    isExit = c.isExit();
+        while (isExit == false) {
+            try {
+                String cmd = ui.readCommand();
+                Command c = Parser.parse(cmd);
+                c.execute(tasks, storage, ui);
+                isExit = c.isExit();
                 }
-                catch (DukeException e) {
-                    ui.showErrorMessage(e);
+            catch (DukeException e) {
+                ui.showErrorMessage(e);
             }
-
-
 
         }
 
+    }
+
+    public String executeCommand(String input) throws DukeException {
+        Command cmd = parser.parse(input);
+        try {
+            cmd.execute(tasks, storage, ui);
+            return
+        }
+        catch (DukeException e) {
+            return "Oops I don't understand";
+        }
     }
 
 }

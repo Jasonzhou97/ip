@@ -34,4 +34,7 @@ public class Ui {
         System.out.println("OOPS!!! Something went wrong! "+ solution);
     }
 
+    public String welcome() {
+        return "Hello! I'm Lebum\nWhat can I do for you?";
+    }
 }

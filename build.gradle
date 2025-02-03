@@ -2,23 +2,27 @@ plugins {
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 repositories {
     mavenCentral()
 }
 
+def javaFxVersion = '17'
+
 dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
+    implementation "org.openjfx:javafx-controls:${javaFxVersion}"
+    implementation "org.openjfx:javafx-base:${javaFxVersion}"
+    implementation "org.openjfx:javafx-graphics:${javaFxVersion}"
 }
 
 test {
     useJUnitPlatform()
-
     testLogging {
         events "passed", "skipped", "failed"
-
         showExceptions true
         exceptionFormat "full"
         showCauses true
@@ -28,7 +32,7 @@ test {
 }
 
 application {
-    mainClass.set("duke.main.Duke")
+    mainClass.set("duke.main.Launcher")
 }
 
 shadowJar {
@@ -36,11 +40,17 @@ shadowJar {
     archiveClassifier = null
 }
 
-run{
+javafx {
+    version = javaFxVersion
+    modules = ['javafx.controls', 'javafx.base', 'javafx.graphics']
+}
+
+run {
     standardInput = System.in
 }
+
 jar {
     manifest {
-        attributes 'Main-Class': 'duke.main.Duke'
+        attributes 'Main-Class': 'duke.main.Launcher'
     }
 }

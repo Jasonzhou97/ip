@@ -1,10 +1,12 @@
 package duke.task;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * Deadline class that inherits from Task
+ */
 public class Deadline extends Task {
 
     private String title;
@@ -27,7 +29,7 @@ public class Deadline extends Task {
     private String endDate;
 
     /**
-     *
+     * Constructor
      * @param title name of todo task
      * @param endDate end date and time of todo
      */
@@ -70,19 +72,19 @@ public class Deadline extends Task {
     }
 
     /**
-     *
+     * Get the end date of the deadline
      * @return end date time
      */
-    public String getEndDate(){
-        return "(by:" + endDate +")";
+    public String getEndDate() {
+        return "(by:" + endDate + ")";
     }
 
-    public String getEndDateFile(){
+    public String getEndDateFile() {
         return endDate;
     }
     @Override
-    public String print(){
-        return "[D]" + " "+ this.getStatus() + " " + this.getTitle() + this.getEndDate();
+    public String print() {
+        return "[D]" + " " + this.getStatus() + " " + this.getTitle() + this.getEndDate();
     }
 
 
