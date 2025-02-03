@@ -65,33 +65,34 @@ public class Main extends Application {
         stage.setScene(scene);
 
         // Set up event handlers
-        sendButton.setOnAction((event) -> {
-            try {
-                String userInputText = userInput.getText().trim();
-                showMessage(userInputText);
-                parser.parse(userInputText);
-                Command command = parser.parse(userInputText);
-                command.execute();
-                userInput.clear();
-            } catch (DukeException e) {
-                showMessage("Error: " + e.getMessage());
-            }
-        });
-
-        userInput.setOnAction((event) -> {
-            try {
-                String userInputText = userInput.getText().trim();
-
-                userInput.clear();
-            } catch (DukeException e) {
-                showMessage("Error: " + e.getMessage());
-            }
-        });
+        sendButton.setOnAction((event) -> handleInput());
+        userInput.setOnAction((event) -> handleInput());
 
         showMessage(ui.welcome());
         stage.show();
     }
 
+    private void handleInput() {
+        String input = userInput.getText().trim();
+        if (!input.isEmpty()) {
+            showMessage("You: " + input);
+        }
+        try {
+            boolean canRun = duke.executeCommand(input);
+            if (canRun) {
+                showMessage("Success");
+
+            }
+            else {
+                showMessage("Error");
+            }
+        }
+        catch (DukeException e) {
+            showMessage("Oops something went wrong");
+        }
+
+
+    }
     private void showMessage(String message) {
         Label messageLabel = new Label(message);
         messageLabel.setWrapText(true);

@@ -35,7 +35,7 @@ public class Storage {
 
             // Create and write to file
             FileWriter fw = new FileWriter(path);
-            for(Task t : tasks.array()) {
+            for (Task t : tasks.array()) {
                 fw.write(formatTask(t));
             }
             fw.close();

@@ -17,7 +17,7 @@ public class AddToDoCommand extends Command{
     }
 
     @Override
-    public void execute(TaskList tasks,Storage storage, Ui Ui) throws DukeException {
+    public void execute(TaskList tasks, Storage storage, Ui Ui) throws DukeException {
         try {
             if (parts.length < 2) {
                 throw new DukeException("OOPS!!! The description of a todo cannot be empty, please fill in the description!");
@@ -26,7 +26,7 @@ public class AddToDoCommand extends Command{
             storage.saveToFile(tasks);
         }
 
-        catch(ArrayIndexOutOfBoundsException e){
+        catch (ArrayIndexOutOfBoundsException e){
             throw new DukeException("OOPS!!! The description of a todo cannot be empty, please fill in the description!");
         }
 

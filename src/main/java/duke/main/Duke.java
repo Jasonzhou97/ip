@@ -55,14 +55,15 @@ public class Duke {
 
     }
 
-    public String executeCommand(String input) throws DukeException {
+    public boolean executeCommand(String input) throws DukeException {
         Command cmd = parser.parse(input);
         try {
             cmd.execute(tasks, storage, ui);
-            return
+            String message = cmd.
+            return true;
         }
         catch (DukeException e) {
-            return "Oops I don't understand";
+            return false;
         }
     }
 
