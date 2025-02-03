@@ -13,6 +13,8 @@ E | [X] | project meeting | Mon 2pm | 4pm
 T | [ ] | read harro
 T | [X] | read book
 E | [ ] | project meeting | Mon 2pm | 4pm
-T | [X] | read
 T | [ ] | read
-T | [ ] | list
+T | [ ] | read
+T | [X] | list
+T | [ ] | read
+D | [X] | do homework  |  no idea :-p

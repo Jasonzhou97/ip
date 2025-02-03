@@ -10,8 +10,13 @@ public class UnmarkCommand extends Command {
     private int index;
     private String[] parts;
 
+    private String response = "";
+
     public UnmarkCommand(String[] parts) {
         this.parts = parts;
+    }
+    public String getResponse(){
+        return this.response;
     }
 
     public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {
@@ -21,6 +26,7 @@ public class UnmarkCommand extends Command {
             }
             int unmarkIndex = Integer.parseInt(parts[1]) - 1;
             Task curTaskUnmark = tasks.array().get(unmarkIndex);
+            response += "You have marked " + curTaskUnmark.getTitle() + " as undone.";
             curTaskUnmark.unmark();
             storage.saveToFile(tasks);
         } catch (NumberFormatException e) {

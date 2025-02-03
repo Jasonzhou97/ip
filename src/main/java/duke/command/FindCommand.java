@@ -12,7 +12,7 @@ public class FindCommand extends Command {
     public FindCommand(String[] parts){
         this.parts = parts;
     }
-
+    private String response = "";
     @Override
     public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {
         try {
@@ -26,6 +26,7 @@ public class FindCommand extends Command {
                 for (String p: this.parts){
                     if(title.contains(p)){
                         System.out.println((counter + 1) + "." + k.print());
+                        response += (counter + 1) + "." + k.print();
                         found = true;
                         counter += 1;
                     }
@@ -38,5 +39,8 @@ public class FindCommand extends Command {
         catch (DukeException e){
             throw new DukeException("Invalid finding! Please input 'find /title/ ;");
         }
+    }
+    public String getResponse(){
+        return this.response;
     }
 }

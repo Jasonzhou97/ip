@@ -6,8 +6,12 @@ public class MarkCommand extends Command{
     private int index;
     private String[] parts;
 
+    private String response = "";
     public MarkCommand(String[] parts) {
         this.parts = parts;
+    }
+    public String getResponse(){
+        return this.response;
     }
     public void execute (TaskList tasks, Storage storage, Ui ui) throws DukeException {
         try {
@@ -16,6 +20,7 @@ public class MarkCommand extends Command{
             }
             int index = Integer.parseInt(parts[1]) - 1;
             Task curTask = tasks.array().get(index);
+            response = "You have marked " + curTask.getTitle() + " as done.";
             curTask.markDone();
             storage.saveToFile(tasks);
         }

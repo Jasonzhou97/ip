@@ -8,9 +8,10 @@ import duke.main.Ui;
  * Parent command class.
  */
 public abstract class Command {
+
     public abstract void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException;
 
-    public String showMessage() {
+    public String getResponse() {
         return "hi";
     }
     public boolean isExit() {

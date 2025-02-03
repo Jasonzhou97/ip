@@ -55,11 +55,17 @@ public class Duke {
 
     }
 
+    /**
+     * Handles input and output in javaFX.
+     * @param input that user inputs in GUI.
+     * @return a string to be displayed in javaFX.
+     * @throws DukeException when unable to process input.
+     */
     public String executeCommand(String input) throws DukeException {
         Command cmd = parser.parse(input);
         try {
             cmd.execute(tasks, storage, ui);
-            String message = cmd.showMessage();
+            String message = cmd.getResponse();
             return message;
         }
         catch (DukeException e) {

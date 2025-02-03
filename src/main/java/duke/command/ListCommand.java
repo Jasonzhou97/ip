@@ -2,18 +2,18 @@ package duke.command;
 import duke.main.*;
 import duke.task.Task;
 public class ListCommand extends Command{
-    private String list = "";
+    private String response = "";
     public void execute(TaskList tasks, Storage storage, Ui ui) {
         for (int i = 0; i < tasks.getNum_of_tasks(); i++) {
             Task t = tasks.array().get(i);
             int index = i + 1;
             System.out.println(index + ". " + t.print());
-            list += index + ". " + t.print() + "\n";
+            response += index + ". " + t.print() + "\n";
         }
     }
     @Override
-    public String showMessage() {
-        return this.list;
+    public String getResponse() {
+        return this.response;
     }
 
 }
