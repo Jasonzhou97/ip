@@ -17,5 +17,6 @@ T | [ ] | read
 T | [ ] | read
 T | [X] | list
 T | [ ] | read
-D | [X] | do homework  |  no idea :-p
-T | [ ] | return money
+D | [ ] | do homework  |  no idea :-p
+T | [X] | return money
+T | [ ] | read book
