@@ -1,18 +1,28 @@
 package duke.command;
-import duke.main.*;
+import duke.main.Storage;
+import duke.main.TaskList;
+import duke.main.Ui;
 
-public class ExitCommand extends Command{
+/**
+ * Command to execute the GUI when user enters bye
+ */
+public class ExitCommand extends Command {
 
-
+    /**
+     * Execute the exit command when user enters bye.
+     * @param tasks list of tasks loaded from storage
+     * @param storage the storage to load and save tasks
+     * @param ui to allow users to interact
+     */
     @Override
-    public void execute(TaskList tasks, Storage storage,Ui ui) {
+    public void execute(TaskList tasks, Storage storage, Ui ui) {
         ui.showByeMessage();
     }
-    public String getResponse(){
+    public String getResponse() {
         return "Bye!";
     }
     @Override
-    public boolean isExit(){
+    public boolean isExit() {
         return true;
     }
 }

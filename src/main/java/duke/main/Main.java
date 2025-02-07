@@ -2,12 +2,16 @@ package duke.main;
 import duke.exception.DukeException;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,6 +25,8 @@ public class Main extends Application {
     private TextField userInput;
     private Button sendButton;
     private Scene scene;
+    private Image userImage;
+    private Image lebumImage;
     private Parser parser;
     private Lebum lebum;
     private Ui ui;
@@ -30,7 +36,15 @@ public class Main extends Application {
         lebum = new Lebum("data/tasks.txt");
         parser = new Parser();
         ui = new Ui();
-
+        //load user image
+        try {
+            userImage = new Image(this.getClass().getResourceAsStream("/images/user.jpg"));
+            lebumImage = new Image(this.getClass().getResourceAsStream("/images/lebum.jpeg"));
+        }
+        catch (Exception e) {
+            System.out.println("Error uploading image");
+        }
+        // Set up UI components
         scrollPane = new ScrollPane();
         dialogContainer = new VBox();
         dialogContainer.setPadding(new Insets(10));
@@ -38,6 +52,8 @@ public class Main extends Application {
 
         scrollPane.setContent(dialogContainer);
         scrollPane.setFitToWidth(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
         userInput = new TextField();
         sendButton = new Button("Send");
@@ -66,34 +82,60 @@ public class Main extends Application {
         sendButton.setOnAction((event) -> handleInput());
         userInput.setOnAction((event) -> handleInput());
 
-        showMessage(ui.welcome());
+        // Show welcome message
+        showMessage(ui.welcome(), false);
         stage.show();
     }
 
     private void handleInput() {
         String input = userInput.getText().trim();
         if (!input.isEmpty()) {
-            showMessage("You: " + input);
+            showMessage("You: " + input, true);
         }
         try {
             String response = lebum.executeCommand(input);
             if (!response.equals("Oops")) {
-                showMessage("Lebum: " + response);
+                showMessage("Lebum: " + response, false);
 
             }
             else {
-                showMessage("Error");
+                showMessage("Error", false);
             }
         }
         catch (DukeException e) {
-            showMessage("Oops something went wrong");
+            showMessage("Oops something went wrong", false);
         }
         userInput.clear();
 
     }
-    private void showMessage(String message) {
+    private void showMessage(String message, boolean isUser) {
+        HBox messageBox = new HBox(10);
+        messageBox.setPadding(new Insets(5));
         Label messageLabel = new Label(message);
         messageLabel.setWrapText(true);
-        dialogContainer.getChildren().add(messageLabel);
+        messageLabel.setMaxWidth(250);
+        messageLabel.setPadding(new Insets(8));
+        //image
+        ImageView imageView = new ImageView(isUser ? userImage : lebumImage);
+        imageView.setFitHeight(30);
+        imageView.setFitWidth(30);
+        imageView.setPreserveRatio(true);
+        //style message
+        String bubbleStyle = String.format(
+                "-fx-background-color: %s; -fx-background-radius: 10;",
+                isUser ? "#DCF8C6" : "#E8E8E8"
+        );
+        if (isUser) {
+            messageBox.setAlignment(Pos.CENTER_RIGHT);
+            messageBox.getChildren().addAll(messageLabel, imageView);
+        } else {
+            messageBox.setAlignment(Pos.CENTER_LEFT);
+            messageBox.getChildren().addAll(imageView, messageLabel);
+        }
+
+        dialogContainer.getChildren().add(messageBox);
+
+        // Auto-scroll to bottom
+        scrollPane.setVvalue(1.0);
     }
 }
