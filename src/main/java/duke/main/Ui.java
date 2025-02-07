@@ -11,27 +11,27 @@ public class Ui {
         this.sc = new Scanner(System.in);
     }
 
-    public String readCommand(){
+    public String readCommand() {
         return sc.nextLine().trim();
     }
-    public void showWelcomeMessage(){
-        System.out.println("Hello! I'm Lebum");
+    public void showWelcomeMessage() {
+        System.out.println("Wassup! I'm Lebum");
         System.out.println("What can I do for you?");
     }
 
-    public void showByeMessage(){
-        System.out.println("Bye. Hope to see you again soon!");
+    public void showByeMessage() {
+        System.out.println("Bye. Hope I never see you again!");
     }
 
-    public void showErrorMessage(Exception e){
+    public void showErrorMessage(Exception e) {
         System.out.println("OOPS!!! Something went wrong "+e.getMessage());
     }
-    public void showErrorMessage(){
+    public void showErrorMessage() {
         System.out.println("OOPS!!! Something went wrong!");
     }
 
-    public void showErrorMessage(String solution){
-        System.out.println("OOPS!!! Something went wrong! "+ solution);
+    public void showErrorMessage(String solution) {
+        System.out.println("OOPS!!! Something went wrong! " + solution);
     }
 
     public String welcome() {

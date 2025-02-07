@@ -23,7 +23,7 @@ public class Storage {
     }
 
     /**
-     *
+     * Save tasks to storage file.
      * @param tasks the arraylists of tasks to save to txt file, before formatting
      */
 
