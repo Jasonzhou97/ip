@@ -8,7 +8,8 @@ import duke.exception.DukeException;
  */
 public class Parser {
     public static Command parse(String input) throws DukeException {
-        String[] parts = input.split(" ",2);
+        String[] parts = input.split(" ", 2);
+        assert(parts.length >= 2);
         String command = parts[0].toLowerCase();
 
         switch(command){
