@@ -41,8 +41,6 @@ public class Parser {
                 return new FindCommand(parts);
             default:
                 throw new DukeException("OOPS I have no idea what that means :(");
-
-
         }
 
     }

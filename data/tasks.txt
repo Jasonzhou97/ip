@@ -1,5 +1,6 @@
-T | [X] | list
-T | [ ] | read
 D | [ ] | do homework  |  no idea :-p
-T | [X] | return money
+T | [ ] | return money
 T | [ ] | read book
+T | [ ] | read
+T | [ ] | buy
+T | [ ] | buy

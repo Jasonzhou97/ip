@@ -96,7 +96,6 @@ public class Main extends Application {
             String response = lebum.executeCommand(input);
             if (!response.equals("Oops")) {
                 showMessage("Lebum: " + response, false);
-
             }
             else {
                 showMessage("Error", false);
@@ -106,7 +105,6 @@ public class Main extends Application {
             showMessage("Oops something went wrong", false);
         }
         userInput.clear();
-
     }
     private void showMessage(String message, boolean isUser) {
         HBox messageBox = new HBox(10);

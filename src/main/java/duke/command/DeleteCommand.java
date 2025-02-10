@@ -27,11 +27,8 @@ public class DeleteCommand extends Command {
                 throw new DukeException("OOPS!!! You did not specify an index to delete, please specify an index!");
             }
             Task t = null;
-            String content = parts[1];
-            if (content.contains(",")) {
-                System.out.println("masss");
-                String[] indices = content.split(",");
-                response = massDelete(indices, tasks, storage);
+            if (isMassCommand(parts)) {
+                response = massDelete(tasks, storage);
       }
             else {
                 System.out.println("single");
@@ -49,12 +46,14 @@ public class DeleteCommand extends Command {
         }
     }
 
-    private String massDelete(String[] parts, TaskList tasks, Storage storage) {
+    private String massDelete(TaskList tasks, Storage storage) {
+        String content = parts[1];
+        String[] indexArray = content.split(",");
         String response = "";
         ArrayList<Integer> indices = new ArrayList<>();
         response += "Noted. I've removed these tasks:\n";
-        for (int i = 0; i < parts.length; i++) {
-            indices.add(Integer.parseInt(parts[i]));
+        for (int i = 0; i < indexArray.length; i++) {
+            indices.add(Integer.parseInt(indexArray[i]));
         }
         Collections.sort(indices, Collections.reverseOrder());
         for (int i = 0; i < indices.size(); i++) {

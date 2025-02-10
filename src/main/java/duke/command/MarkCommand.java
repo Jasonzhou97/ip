@@ -18,18 +18,36 @@ public class MarkCommand extends Command{
             if (parts.length < 2) {
                 throw new DukeException("OOPS!!! Please provide a task number to mark.");
             }
-            int index = Integer.parseInt(parts[1]) - 1;
-            Task curTask = tasks.array().get(index);
-            response = "You have marked " + curTask.getTitle() + " as done.";
-            curTask.markDone();
+            if (isMassCommand(parts)) {
+                response += "You have marked the following tasks as done:\n";
+                massMark(tasks, storage);
+            }
+            else {
+                int index = Integer.parseInt(parts[1]) - 1;
+                Task curTask = tasks.array().get(index);
+                response = "You have marked " + curTask.getTitle() + " as done.";
+                curTask.markDone();
+            }
             storage.saveToFile(tasks);
         }
-        catch(NumberFormatException e){
+        catch (NumberFormatException e) {
             throw new DukeException("OOPS!!! The task number must be a number.");
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DukeException("OOPS!!! Please provide a task number to mark.");
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("OOPS!!! The task number is invalid.");
         }
+    }
+
+    public void massMark(TaskList tasks, Storage storage) {
+        String content = parts[1];
+        String[] indexArray = content.split(",");
+        for (int i = 0; i < indexArray.length; i++) {
+            int index = Integer.parseInt(indexArray[i]);
+            Task t = tasks.array().get(index - 1);
+            t.markDone();
+            response += t.print();
+        }
+        storage.saveToFile(tasks);
     }
 }

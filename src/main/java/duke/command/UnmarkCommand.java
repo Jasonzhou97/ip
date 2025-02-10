@@ -24,11 +24,17 @@ public class UnmarkCommand extends Command {
             if (parts.length < 2) {
                 throw new DukeException("OOPS!!! Please provide a task number to unmark.");
             }
-            int unmarkIndex = Integer.parseInt(parts[1]) - 1;
-            Task curTaskUnmark = tasks.array().get(unmarkIndex);
-            response += "You have marked " + curTaskUnmark.getTitle() + " as undone.";
-            curTaskUnmark.unmark();
-            storage.saveToFile(tasks);
+            if (isMassCommand(parts)) {
+                response += "You have unmarked the following tasks as done:\n";
+                massUnmark(tasks, storage);
+            }
+            else {
+                int unmarkIndex = Integer.parseInt(parts[1]) - 1;
+                Task curTaskUnmark = tasks.array().get(unmarkIndex);
+                response += "You have marked " + curTaskUnmark.getTitle() + " as undone.";
+                curTaskUnmark.unmark();
+                storage.saveToFile(tasks);
+            }
         } catch (NumberFormatException e) {
             throw new DukeException("OOPS!!! The task number must be a number.");
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -36,5 +42,17 @@ public class UnmarkCommand extends Command {
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException("OOPS!!! The task number is invalid.");
         }
+    }
+
+    public void massUnmark(TaskList tasks, Storage storage) {
+        String content = parts[1];
+        String[] indexArray = content.split(",");
+        for (int i = 0; i < indexArray.length; i++) {
+            int index = Integer.parseInt(indexArray[i]);
+            Task t = tasks.array().get(index - 1);
+            t.unmark();
+            response += t.print() + "\n";
+        }
+        storage.saveToFile(tasks);
     }
 }
