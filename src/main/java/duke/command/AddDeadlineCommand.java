@@ -41,6 +41,7 @@ public class AddDeadlineCommand extends Command {
      */
     public void execute(TaskList tasks, Storage storage, Ui Ui) throws DukeException, ArrayIndexOutOfBoundsException {
         try {
+            assert (parts.length >= 2);
             if (parts.length < 2) {
                 throw new DukeException("OOPS!!! The description of a deadline cannot be empty, "
                         + "please fill in the description!");

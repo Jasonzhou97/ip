@@ -18,7 +18,7 @@ public class Storage {
 
 
 
-    public Storage(String path){
+    public Storage(String path) {
         this.path = path;
     }
 
