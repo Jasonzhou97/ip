@@ -29,8 +29,7 @@ public class TaskList {
         System.out.println("Got it! I've added this task\n" + task.print());
         System.out.println("Now you have " + num_of_tasks + " tasks in the list.");
         String msg = task.print();
-        int num = num_of_tasks;
-        return "Got it! I've added this task\n" + msg + "\n" + "Now you have " + num + " tasks in the list.";
+        return "Got it! I've added this task\n" + msg + "\n" + "Now you have " + this.num_of_tasks + " tasks in the list.";
     }
 
     /**
