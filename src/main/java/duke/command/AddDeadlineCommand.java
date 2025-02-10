@@ -39,7 +39,7 @@ public class AddDeadlineCommand extends Command {
      * Executes the add command.
      * @param tasks The list of tasks to add to
      * @param storage The storage to save to
-     * @param Ui The Ui user interacts with
+     * @param ui The Ui user interacts with
      * @throws DukeException Thrown when dates are invalid
      * @throws ArrayIndexOutOfBoundsException Thrown when array length is not as expected
      */
