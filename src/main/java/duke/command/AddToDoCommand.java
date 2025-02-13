@@ -11,13 +11,13 @@ public class AddToDoCommand extends Command{
     private String title;
     private String[] parts;
 
-    private String response = "";
+    private String response = "I have added tasks: \n";
 
     public AddToDoCommand(String title) {
         this.title = title;
         parts = title.split(" ",2);
     }
-    public String getResponse(){
+    public String getResponse() {
         return this.response;
     }
     @Override

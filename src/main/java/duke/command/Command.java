@@ -20,6 +20,11 @@ public abstract class Command {
         return false;
     }
 
+    /**
+     * Validates if input is a user command or normal command.
+     * @param input user input
+     * @return if the input contains , which means it is a mass command
+     */
     public boolean isMassCommand(String[] input) {
         String content = input[1];
         return content.contains(",");

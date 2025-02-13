@@ -46,7 +46,7 @@ public class MarkCommand extends Command{
             int index = Integer.parseInt(indexArray[i]);
             Task t = tasks.array().get(index - 1);
             t.markDone();
-            response += t.print();
+            response += t.print() + "\n";
         }
         storage.saveToFile(tasks);
     }
