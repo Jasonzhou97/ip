@@ -2,7 +2,7 @@ package duke.main;
 import duke.task.Task;
 import java.util.ArrayList;
 import duke.exception.DukeException;
-
+import duke.task.Deadline;
 /**
  * A class to represent the list of tasks
  */
@@ -61,7 +61,7 @@ public class TaskList {
     public ArrayList<Task> array() {
         return this.tasks;
     }
-
+    // In TaskList.java
     /**
      * Locates the index of task to be deleted and deletes it.
      * @param index the index of the task to delete
