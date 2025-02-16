@@ -1,19 +1,21 @@
 package duke.command;
+
 import duke.exception.DukeException;
 import duke.main.Storage;
 import duke.main.TaskList;
 import duke.main.Ui;
 import duke.task.Deadline;
 
-
-
 /**
  * Class that handles adding deadlines.
  */
 public class AddDeadlineCommand extends Command {
+    private static final String EMPTY_DESC_ERROR = "OOPS!!! The description of a deadline cannot be empty.";
+    private static final String MISSING_DEADLINE_ERROR = "OOPS!!! Please provide a deadline using /by.";
+    private static final String INVALID_FORMAT_ERROR = "OOPS!!! Invalid deadline format. Use: deadline <description> /by <time>";
+    private static final String INVALID_DATE_ERROR = "Invalid date format. Use yyyy-MM-dd or yyyy-MM-dd HH:mm";
     private String title;
     private String[] parts;
-
     private String response = "";
 
     /**
@@ -30,34 +32,34 @@ public class AddDeadlineCommand extends Command {
         return this.response;
     }
 
-
     /**
      * Executes the add command.
      * @param tasks The list of tasks to add to
      * @param storage The storage to save to
-     * @param Ui The Ui user interacts with
+     * @param ui The Ui user interacts with
      * @throws DukeException Thrown when dates are invalid
      * @throws ArrayIndexOutOfBoundsException Thrown when array length is not as expected
      */
-    public void execute(TaskList tasks, Storage storage, Ui Ui) throws DukeException, ArrayIndexOutOfBoundsException {
+    public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {
         try {
-            assert (parts.length >= 2);
-            if (parts.length < 2) {
-                throw new DukeException("OOPS!!! The description of a deadline cannot be empty, "
-                        + "please fill in the description!");
-            }
+            validateInput();
             String[] dlParts = parts[1].split("/by", 2);
-            if (dlParts.length < 2) {
-                throw new DukeException("OOPS!!! Please provide a deadline using /by.");
-            }
-            this.response = tasks.addTask(new Deadline(dlParts[0], dlParts[1]));
+            this.response = tasks.addTask(new Deadline(dlParts[0].trim(), dlParts[1].trim()));
             storage.saveToFile(tasks);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new DukeException(INVALID_FORMAT_ERROR);
+        } catch (IllegalArgumentException e) {
+            throw new DukeException(INVALID_DATE_ERROR);
         }
-        catch (ArrayIndexOutOfBoundsException e) {
-            throw new DukeException("OOPS!!! Invalid deadline format. Use: deadline <description> /by <time>");
+    }
+
+    private void validateInput() throws DukeException {
+        if (parts.length < 2) {
+            throw new DukeException(EMPTY_DESC_ERROR);
         }
-        catch (DukeException e) {
-            throw new DukeException("Invalid date format. Use yyyy-MM-dd or yyyy-MM-dd HH:mm");
+        String[] dlParts = parts[1].split("/by", 2);
+        if (dlParts.length < 2) {
+            throw new DukeException(MISSING_DEADLINE_ERROR);
         }
     }
 }
