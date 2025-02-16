@@ -15,8 +15,8 @@ public class Ui {
         return sc.nextLine().trim();
     }
     public void showWelcomeMessage() {
-        System.out.println("Wassup! I'm Lebum");
-        System.out.println("What can I do for you?");
+        System.out.println("Yo wassup! I'm Lebum");
+        System.out.println("Anything the GOAT can do for you today?");
     }
 
     public void showByeMessage() {
@@ -24,17 +24,17 @@ public class Ui {
     }
 
     public void showErrorMessage(Exception e) {
-        System.out.println("OOPS!!! Something went wrong "+e.getMessage());
+        System.out.println("OOPS!!! CHECK YOUR COMMAND AGAIN! " + e.getMessage());
     }
     public void showErrorMessage() {
-        System.out.println("OOPS!!! Something went wrong!");
+        System.out.println("OOPS!!! CHECK YOUR COMMAND AGAIN!");
     }
 
     public void showErrorMessage(String solution) {
-        System.out.println("OOPS!!! Something went wrong! " + solution);
+        System.out.println("OOPS!!! CHECK YOUR COMMAND AGAIN!" + solution);
     }
 
     public String welcome() {
-        return "Hello! I'm Lebum\nWhat can I do for you?";
+        return "Hello! I'm Lebum\nAnything the GOAT can do for you?";
     }
 }
