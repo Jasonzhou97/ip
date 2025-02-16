@@ -136,7 +136,7 @@ public class Main extends Application {
                 showMessage("Lebum: " + response, false);
 
             }
- else {
+        else {
                 showMessage("Error", false);
             }
         } catch (DukeException e) {
@@ -154,7 +154,7 @@ public class Main extends Application {
         messageLabel.setMaxWidth(250);
         messageLabel.setPadding(new Insets(10));
 
-        // Enhanced message bubble styling
+        // Better styling for chat interface
         String bubbleStyle = String.format(
                 "-fx-background-color: %s;"
                         + "-fx-background-radius: 15;"
