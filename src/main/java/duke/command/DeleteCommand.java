@@ -16,7 +16,7 @@ public class DeleteCommand extends Command {
     public DeleteCommand(String[] parts) {
         this.parts = parts;
     }
-    public String getResponse(){
+    public String getResponse() {
         return this.response;
     }
 

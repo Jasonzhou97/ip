@@ -9,6 +9,7 @@ import duke.main.Ui;
  * Parent command class.
  */
 public abstract class Command {
+    private String response;
     private static final String EMPTY_DESC_ERROR = "OOPS!!! The description of a deadline cannot be empty.";
     private static final String MISSING_DEADLINE_ERROR = "OOPS!!! Please provide a deadline using /by.";
     private static final String INVALID_FORMAT_ERROR = "OOPS!!! Invalid deadline format. Use: deadline <description> /by <time>";
@@ -22,7 +23,7 @@ public abstract class Command {
     public abstract void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException;
 
     public String getResponse() {
-        return "hi";
+        return response;
     }
     public boolean isExit() {
         return false;

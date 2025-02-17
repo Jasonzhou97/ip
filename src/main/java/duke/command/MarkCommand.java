@@ -13,7 +13,7 @@ public class MarkCommand extends Command{
     public String getResponse(){
         return this.response;
     }
-    public void execute (TaskList tasks, Storage storage, Ui ui) throws DukeException {
+    public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {
         try {
             if (parts.length < 2) {
                 throw new DukeException("OOPS!!! Please provide a task number to mark.");

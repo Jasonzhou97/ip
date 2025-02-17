@@ -1,9 +1,10 @@
 D | [ ] | do homework  |  no idea :-p
-T | [ ] | return money
-T | [ ] | read book
+T | [X] | return money
+T | [X] | read book
 T | [ ] | read
 T | [ ] | buy
 T | [ ] | buy
 T | [X] | read
-T | [X] | read
-T | [X] | buy stuff, read book
+T | [ ] | read
+T | [ ] | buy stuff, read book
+T | [ ] | read

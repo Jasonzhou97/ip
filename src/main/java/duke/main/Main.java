@@ -140,7 +140,7 @@ public class Main extends Application {
                 showMessage("Error", false);
             }
         } catch (DukeException e) {
-            showMessage("Oops something went wrong", false);
+            showMessage("Oops something went wrong, fix your command!", false);
         }
         userInput.clear();
     }

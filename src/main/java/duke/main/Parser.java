@@ -50,10 +50,11 @@ public class Parser {
 
             case "find":
                 return new FindCommand(parts);
-            case "hi ":
+            case "hi":
                 return new GreetCommand();
-            case "hey ":
+            case "hey":
                 return new GreetCommand();
+                
             default:
                 throw new DukeException("OOPS I have no idea what that means :(");
         }
