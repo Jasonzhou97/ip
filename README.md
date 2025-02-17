@@ -1,6 +1,6 @@
 # Lebum Chatbot - Your GOAT Task Management GM
 
-![Lebum Interface](Ui.png)
+![Lebum Interface](docs/Ui.png)
 
 Lebum is a desktop chat-based task manager that helps you keep track of your todos, deadlines, and events. With its friendly chat interface, managing tasks feels like chatting with a friend!
 
