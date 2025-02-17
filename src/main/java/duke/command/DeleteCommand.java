@@ -4,8 +4,6 @@ import duke.main.Storage;
 import duke.main.TaskList;
 import duke.main.Ui;
 import duke.task.Task;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -29,7 +27,7 @@ public class DeleteCommand extends Command {
             Task t = null;
             if (isMassCommand(parts)) {
                 response = massDelete(tasks, storage);
-      }
+            }
             else {
                 System.out.println("single");
                 int index = Integer.parseInt(parts[1]);

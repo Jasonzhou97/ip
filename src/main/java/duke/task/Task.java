@@ -1,58 +1,58 @@
 package duke.task;
 public class Task {
     /**
-     * basic variables every task and subclasses should have
+     * Basic variables every task and subclasses should have
      */
     private String title;
     private Boolean isDone;
 
     /**
-     *
+     * Constructor for task.
      * @param title name of task
      */
-    public Task(String title){
+    public Task(String title) {
         this.title = title;
         this.isDone = false;
     }
 
     /**
-     *
+     * Method to return the name of the task.
      * @return the name of the task
      */
-    public String getTitle(){
+    public String getTitle() {
         return this.title;
     }
 
     /**
-     * if mark will return with a X
+     * If mark will return with a X.
      * @return the string of the status of task
      */
-    public String getStatus(){
+    public String getStatus() {
         return isDone ? "[X]" : "[ ]";
     }
 
-    public Boolean getIsDone(){
+    public Boolean getIsDone() {
         return isDone;
     }
     /**
-     * method to mark task as done along with printing the details
+     * Method to mark task as done along with printing the details.
      */
-    public void markDone(){
+    public void markDone() {
         isDone = true;
         System.out.println("Nice! I've marked this task as done:");
         System.out.println(print());
     }
 
     /**
-     * for loading tasks that are done without output
+     * For loading tasks that are done without output.
      */
-    public void markDoneSilently(){
+    public void markDoneSilently() {
         isDone = true;
     }
     /**
-     * method to unmark task along with printing the details
+     * Method to unmark task along with printing the details.
      */
-    public void unmark(){
+    public void unmark() {
         isDone = false;
         System.out.println("OK, I've marked this task as not done yet:");
         System.out.println(print());
@@ -60,11 +60,11 @@ public class Task {
     }
 
     /**
-     *
+     * Method to return the string representation of the task.
      * @return the messages that describes the task
      */
-    public String print(){
-        return getStatus() + " "+this.title;
+    public String print() {
+        return getStatus() + " " + this.title;
     }
 
 

@@ -20,7 +20,7 @@ public class FindCommand extends Command {
     @Override
     public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {
         try {
-            boolean found = false;
+            boolean isFound = false;
             int counter = 0;
             if (parts.length != 2) {
                 throw new DukeException("Invalid finding! Please input 'find /title/ ;");
@@ -31,12 +31,12 @@ public class FindCommand extends Command {
                     if (title.contains(p)) {
                         System.out.println((counter + 1) + "." + k.print());
                         response += (counter + 1) + "." + k.print() + "\n";
-                        found = true;
+                        isFound = true;
                         counter += 1;
                     }
                 }
             }
-            if (!found) {
+            if (!isFound) {
                 System.out.println("Oops, there are no matching tasks!");
             }
         }
