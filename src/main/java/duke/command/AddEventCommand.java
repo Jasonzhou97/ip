@@ -23,7 +23,7 @@ public class AddEventCommand extends Command {
     }
     public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException,ArrayIndexOutOfBoundsException {
         try {
-            if (parts.length <2 ) {
+            if (parts.length < 2 ) {
                 throw new DukeException("OOPS!!! The description of an event cannot be empty, please fill in the description!");
             }
             String[] evParts = parts[1].split(" /from ", 2);

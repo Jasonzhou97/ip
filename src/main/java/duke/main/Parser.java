@@ -1,6 +1,16 @@
 package duke.main;
 
-import duke.command.*;
+import duke.command.AddDeadlineCommand;
+import duke.command.AddEventCommand;
+import duke.command.AddToDoCommand;
+import duke.command.Command;
+import duke.command.DeleteCommand;
+import duke.command.ExitCommand;
+import duke.command.FindCommand;
+import duke.command.GreetCommand;
+import duke.command.ListCommand;
+import duke.command.MarkCommand;
+import duke.command.UnmarkCommand;
 import duke.exception.DukeException;
 
 /**
@@ -40,6 +50,10 @@ public class Parser {
 
             case "find":
                 return new FindCommand(parts);
+            case "hi ":
+                return new GreetCommand();
+            case "hey ":
+                return new GreetCommand();
             default:
                 throw new DukeException("OOPS I have no idea what that means :(");
         }

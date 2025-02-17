@@ -19,7 +19,6 @@ public abstract class Command {
     private static final String SPECIAL_CHAR_ERROR = "OOPS!!! Description contains invalid special characters.";
     private static final String MAX_LENGTH_ERROR = "OOPS!!! Description is too long. Maximum 100 characters allowed.";
     private static final String EMPTY_TIME_ERROR = "OOPS!!! Time cannot be empty after /by.";
-    private static final int MAX_DESCRIPTION_LEN
     public abstract void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException;
 
     public String getResponse() {

@@ -1,4 +1,7 @@
 package duke.command;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import duke.exception.DukeException;
 import duke.main.Storage;
@@ -6,17 +9,13 @@ import duke.main.TaskList;
 import duke.main.Ui;
 import duke.task.Deadline;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
 /**
  * Class that handles adding deadlines.
  */
 public class AddDeadlineCommand extends Command {
     private static final String EMPTY_DESC_ERROR = "OOPS!!! The description of a deadline cannot be empty.";
     private static final String MISSING_DEADLINE_ERROR = "OOPS!!! Please provide a deadline using /by.";
-    private static final String INVALID_FORMAT_ERROR = "OOPS!!! Invalid deadline format. Use: deadline <description> /by <time>";
+    private static final String INVALID_FORMAT_ERROR = "OOPS!!! Invalid deadline format. Use: deadline <description> " + "/by <time>";
     private static final String INVALID_DATE_ERROR = "Invalid date format. Use yyyy-MM-dd or yyyy-MM-dd HH:mm";
     private static final String MULTIPLE_BY_ERROR = "OOPS!!! Multiple /by tags found. Please use only one /by tag.";
     private static final String DUPLICATE_TASK_ERROR = "OOPS!!! This exact deadline already exists in your list.";
@@ -30,6 +29,10 @@ public class AddDeadlineCommand extends Command {
     private String[] parts;
     private String response = "";
 
+    /**
+     * Constructor for adding deadline command.
+     * @param title of the task
+     */
     public AddDeadlineCommand(String title) {
         this.title = title.trim();
         parts = this.title.split(" ", 2);
@@ -40,6 +43,13 @@ public class AddDeadlineCommand extends Command {
         return this.response;
     }
 
+    /**
+     * Execute adding deadline tasks.
+     * @param tasks to add
+     * @param storage to load the file
+     * @param ui to handle ui
+     * @throws DukeException
+     */
     public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {
         try {
             validateInput();
