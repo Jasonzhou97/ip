@@ -54,7 +54,7 @@ public class Parser {
                 return new GreetCommand();
             case "hey":
                 return new GreetCommand();
-                
+
             default:
                 throw new DukeException("OOPS I have no idea what that means :(");
         }

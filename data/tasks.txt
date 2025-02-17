@@ -8,3 +8,5 @@ T | [X] | read
 T | [ ] | read
 T | [ ] | buy stuff, read book
 T | [ ] | read
+T | [ ] | read book
+T | [ ] | buy book
