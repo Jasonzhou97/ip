@@ -1,8 +1,11 @@
 package duke.main;
-import duke.task.Task;
 import java.util.ArrayList;
+
 import duke.exception.DukeException;
-import duke.task.Deadline;
+import duke.task.Task;
+
+
+
 /**
  * A class to represent the list of tasks
  */
@@ -14,6 +17,10 @@ public class TaskList {
     private ArrayList<Task> tasks;
 
     private int num_of_tasks;
+
+    /**
+     * Constructor for tasklist
+     */
     public TaskList() {
         this.tasks = new ArrayList<Task>();
         this.num_of_tasks = 0;
@@ -29,7 +36,8 @@ public class TaskList {
         System.out.println("Got it! I've added this task\n" + task.print());
         System.out.println("Now you have " + num_of_tasks + " tasks in the list.");
         String msg = task.print();
-        return "Got it! I've added this task\n" + msg + "\n" + "Now you have " + this.num_of_tasks + " tasks in the list.";
+        return "Got it! I've added this task\n" + msg + "\n"
+                + "Now you have " + this.num_of_tasks + " tasks in the list.";
     }
 
     /**

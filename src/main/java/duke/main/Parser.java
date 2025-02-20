@@ -17,12 +17,14 @@ import duke.exception.DukeException;
  * Parser class to parse user commands
  */
 public class Parser {
+
     public static Command parse(String input) throws DukeException {
         String[] parts = input.split(" ", 2);
         assert(parts.length >= 2);
         String command = parts[0].toLowerCase();
 
-        switch(command){
+        switch(command) {
+
             case "list":
                 return new ListCommand();
 
