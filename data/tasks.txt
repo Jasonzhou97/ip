@@ -20,3 +20,6 @@ D | [ ] | return book | Sunday
 E | [ ] | project meeting | Mon 2pm | 4pm
 E | [ ] | project meeting | Mon 2pm | 4pm
 E | [ ] | project meeting | Mon 2pm | 4pm
+T | [ ] | yeet
+E | [ ] | project meeting | Mon 2pm | 4pm
+D | [ ] | return book | Sunday
