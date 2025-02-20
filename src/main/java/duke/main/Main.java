@@ -136,11 +136,11 @@ public class Main extends Application {
                 showMessage("Lebum: " + response, false);
 
             }
-        else {
-                showMessage("Error", false);
+            else {
+                showMessage("Error, please fix your command!", false);
             }
         } catch (DukeException e) {
-            showMessage("Oops something went wrong, fix your command!", false);
+            showMessage("Something went wrong, fix your command!\n" + e.getMessage(), false);
         }
         userInput.clear();
     }

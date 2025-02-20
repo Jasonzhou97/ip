@@ -46,7 +46,7 @@ public class Lebum {
                 Command c = Parser.parse(cmd);
                 c.execute(tasks, storage, ui);
                 isExit = c.isExit();
-                }
+            }
             catch (DukeException e) {
                 ui.showErrorMessage(e);
             }
@@ -69,7 +69,7 @@ public class Lebum {
             return message;
         }
         catch (DukeException e) {
-            return "Oops";
+            throw new DukeException(e.getMessage());
         }
     }
 

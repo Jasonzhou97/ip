@@ -7,6 +7,9 @@ import duke.task.Task;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Command for deleting one or multiple tasks.
+ */
 public class DeleteCommand extends Command {
     private String[] parts;
     private String response = "";

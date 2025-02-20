@@ -13,18 +13,8 @@ import duke.task.Deadline;
  * Class that handles adding deadlines.
  */
 public class AddDeadlineCommand extends Command {
-    private static final String EMPTY_DESC_ERROR = "OOPS!!! The description of a deadline cannot be empty.";
-    private static final String MISSING_DEADLINE_ERROR = "OOPS!!! Please provide a deadline using /by.";
-    private static final String INVALID_FORMAT_ERROR = "OOPS!!! Invalid deadline format. Use: deadline <description> " + "/by <time>";
-    private static final String INVALID_DATE_ERROR = "Invalid date format. Use yyyy-MM-dd or yyyy-MM-dd HH:mm";
-    private static final String MULTIPLE_BY_ERROR = "OOPS!!! Multiple /by tags found. Please use only one /by tag.";
-    private static final String DUPLICATE_TASK_ERROR = "OOPS!!! This exact deadline already exists in your list.";
-    private static final String PAST_DATE_ERROR = "OOPS!!! Deadline cannot be set in the past.";
-    private static final String SPECIAL_CHAR_ERROR = "OOPS!!! Description contains invalid special characters.";
-    private static final String MAX_LENGTH_ERROR = "OOPS!!! Description is too long. Maximum 100 characters allowed.";
-    private static final String EMPTY_TIME_ERROR = "OOPS!!! Time cannot be empty after /by.";
-    private static final int MAX_DESCRIPTION_LENGTH = 100;
 
+    private static final int MAX_DESCRIPTION_LENGTH = 100;
     private String title;
     private String[] parts;
     private String response = "";
@@ -104,24 +94,42 @@ public class AddDeadlineCommand extends Command {
     }
 
     private void validateDateTime(String dateTime) throws DukeException {
-        try {
-            LocalDateTime parsedDateTime;
-            try {
-                // Try parsing with time
-                parsedDateTime = LocalDateTime.parse(dateTime,
-                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-            } catch (DateTimeParseException e) {
-                // Try parsing date only
-                parsedDateTime = LocalDateTime.parse(dateTime + " 23:59",
-                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-            }
+        // Accept any non-empty string as a valid deadline
+        if (dateTime.trim().isEmpty()) {
+            throw new DukeException(EMPTY_TIME_ERROR);
+        }
 
-            // Check if date is in the past
-            if (parsedDateTime.isBefore(LocalDateTime.now())) {
-                throw new DukeException(PAST_DATE_ERROR);
+        // Optional: try to parse as datetime if it looks like one
+        if (dateTime.matches("\\d{4}-\\d{2}-\\d{2}.*")) {
+            try {
+                LocalDateTime parsedDateTime;
+                try {
+                    // Try parsing with time
+                    parsedDateTime = LocalDateTime.parse(dateTime,
+                            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                } catch (DateTimeParseException e) {
+                    // Try parsing date only
+                    parsedDateTime = LocalDateTime.parse(dateTime + " 23:59",
+                            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                }
+
+                // Check if date is in the past
+                if (parsedDateTime.isBefore(LocalDateTime.now())) {
+                    throw new DukeException(PAST_DATE_ERROR);
+                }
+            } catch (DateTimeParseException e) {
+                // Not a valid datetime format, but we'll accept it as a string
+                // No exception thrown
             }
-        } catch (DateTimeParseException e) {
-            throw new DukeException(INVALID_DATE_ERROR);
+        }
+
+        // Additional validation if needed
+        if (dateTime.length() > MAX_DESCRIPTION_LENGTH) {
+            throw new DukeException(MAX_LENGTH_ERROR);
+        }
+
+        if (containsInvalidSpecialCharacters(dateTime)) {
+            throw new DukeException(SPECIAL_CHAR_ERROR);
         }
     }
 

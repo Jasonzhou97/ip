@@ -1,21 +1,27 @@
 package duke.command;
 import duke.exception.DukeException;
-import duke.main.*;
+import duke.main.Storage;
+import duke.main.TaskList;
+import duke.main.Ui;
 import duke.task.ToDo;
 
 /**
  * Command to add a todo command
  */
-public class AddToDoCommand extends Command{
+public class AddToDoCommand extends Command {
 
     private String title;
     private String[] parts;
 
     private String response = "I have added tasks: \n";
 
+    /**
+     * Constructor for adding todo command.
+     * @param title of the command to add
+     */
     public AddToDoCommand(String title) {
         this.title = title;
-        parts = title.split(" ",2);
+        parts = title.split(" ", 2);
     }
     public String getResponse() {
         return this.response;
@@ -24,7 +30,8 @@ public class AddToDoCommand extends Command{
     public void execute(TaskList tasks, Storage storage, Ui Ui) throws DukeException {
         try {
             if (parts.length < 2) {
-                throw new DukeException("OOPS!!! The description of a todo cannot be empty, please fill in the description!");
+                throw new DukeException("OOPS!!! The description of a todo cannot be empty,"
+                        + " please fill in the description!");
             }
             ToDo todo = new ToDo(parts[1]);
             tasks.addTask(todo);
@@ -32,8 +39,9 @@ public class AddToDoCommand extends Command{
             storage.saveToFile(tasks);
         }
 
-        catch (ArrayIndexOutOfBoundsException e){
-            throw new DukeException("OOPS!!! The description of a todo cannot be empty, please fill in the description!");
+        catch (ArrayIndexOutOfBoundsException e) {
+            throw new DukeException("OOPS!!! The description of a todo cannot be empty"
+                    + ", please fill in the description!");
         }
 
     }

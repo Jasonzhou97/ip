@@ -10,16 +10,16 @@ import duke.main.Ui;
  */
 public abstract class Command {
     private String response;
-    private static final String EMPTY_DESC_ERROR = "OOPS!!! The description of a deadline cannot be empty.";
-    private static final String MISSING_DEADLINE_ERROR = "OOPS!!! Please provide a deadline using /by.";
-    private static final String INVALID_FORMAT_ERROR = "OOPS!!! Invalid deadline format. Use: deadline <description> /by <time>";
-    private static final String INVALID_DATE_ERROR = "Invalid date format. Use yyyy-MM-dd or yyyy-MM-dd HH:mm";
-    private static final String MULTIPLE_BY_ERROR = "OOPS!!! Multiple /by tags found. Please use only one /by tag.";
-    private static final String DUPLICATE_TASK_ERROR = "OOPS!!! This exact deadline already exists in your list.";
-    private static final String PAST_DATE_ERROR = "OOPS!!! Deadline cannot be set in the past.";
-    private static final String SPECIAL_CHAR_ERROR = "OOPS!!! Description contains invalid special characters.";
-    private static final String MAX_LENGTH_ERROR = "OOPS!!! Description is too long. Maximum 100 characters allowed.";
-    private static final String EMPTY_TIME_ERROR = "OOPS!!! Time cannot be empty after /by.";
+    public static final String EMPTY_DESC_ERROR = "OOPS!!! The description of a deadline cannot be empty.";
+    public static final String MISSING_DEADLINE_ERROR = "OOPS!!! Please provide a deadline using /by.";
+    public static final String INVALID_FORMAT_ERROR = "OOPS!!! Invalid deadline format. Use: deadline <description> /by <time>";
+    public static final String INVALID_DATE_ERROR = "Invalid date format. Use yyyy-MM-dd or yyyy-MM-dd HH:mm";
+    public static final String MULTIPLE_BY_ERROR = "OOPS!!! Multiple /by tags found. Please use only one /by tag.";
+    public static final String DUPLICATE_TASK_ERROR = "OOPS!!! This exact deadline already exists in your list.";
+    public static final String PAST_DATE_ERROR = "OOPS!!! Deadline cannot be set in the past.";
+    public static final String SPECIAL_CHAR_ERROR = "OOPS!!! Description contains invalid special characters.";
+    public static final String MAX_LENGTH_ERROR = "OOPS!!! Description is too long. Maximum 100 characters allowed.";
+    public static final String EMPTY_TIME_ERROR = "OOPS!!! Time cannot be empty after /by.";
     public abstract void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException;
 
     public String getResponse() {

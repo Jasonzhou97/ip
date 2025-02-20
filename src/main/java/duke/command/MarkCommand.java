@@ -10,7 +10,7 @@ public class MarkCommand extends Command{
     public MarkCommand(String[] parts) {
         this.parts = parts;
     }
-    public String getResponse(){
+    public String getResponse() {
         return this.response;
     }
     public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {

@@ -1,12 +1,22 @@
-D | [ ] | do homework  |  no idea :-p
+D | [X] | do homework  |  no idea :-p
 T | [X] | return money
 T | [X] | read book
-T | [ ] | read
-T | [ ] | buy
-T | [ ] | buy
 T | [X] | read
-T | [ ] | read
-T | [ ] | buy stuff, read book
+T | [ ] | buy
+T | [ ] | buy
 T | [ ] | read
 T | [ ] | read book
 T | [ ] | buy book
+T | [ ] | read
+T | [ ] | write discussion
+T | [ ] | eat book
+E | [ ] | project meeting | Mon 2pm | 4pm
+E | [ ] | project meeting | Mon 2pm | 4pm
+E | [ ] | project meeting | Mon 2pm | 4pm
+E | [X] | project meeting | Mon 2pm | 4pm
+E | [X] | project meeting | Mon 2pm | 4pm
+E | [ ] | project | Tues 3pm | 4pm
+D | [ ] | return book | Sunday
+E | [ ] | project meeting | Mon 2pm | 4pm
+E | [ ] | project meeting | Mon 2pm | 4pm
+E | [ ] | project meeting | Mon 2pm | 4pm
