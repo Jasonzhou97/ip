@@ -19,7 +19,7 @@ public class ExitCommand extends Command {
         ui.showByeMessage();
     }
     public String getResponse() {
-        return "Bye!";
+        return "Bye! Hope I never see you again!";
     }
     @Override
     public boolean isExit() {

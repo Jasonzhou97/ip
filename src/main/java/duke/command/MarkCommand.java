@@ -1,11 +1,15 @@
 package duke.command;
 import duke.exception.DukeException;
-import duke.main.*;
+import duke.main.Storage;
+import duke.main.TaskList;
+import duke.main.Ui;
 import duke.task.Task;
-public class MarkCommand extends Command{
-    private int index;
-    private String[] parts;
 
+/**
+ * Mark tasks as done command.
+ */
+public class MarkCommand extends Command {
+    private String[] parts;
     private String response = "";
     public MarkCommand(String[] parts) {
         this.parts = parts;
@@ -13,6 +17,8 @@ public class MarkCommand extends Command{
     public String getResponse() {
         return this.response;
     }
+
+    @Override
     public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {
         try {
             if (parts.length < 2) {

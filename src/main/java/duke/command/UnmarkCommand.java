@@ -1,6 +1,8 @@
 package duke.command;
 import duke.exception.DukeException;
-import duke.main.*;
+import duke.main.Storage;
+import duke.main.TaskList;
+import duke.main.Ui;
 import duke.task.Task;
 
 /**
@@ -15,10 +17,16 @@ public class UnmarkCommand extends Command {
     public UnmarkCommand(String[] parts) {
         this.parts = parts;
     }
-    public String getResponse(){
+
+    /**
+     * Method to return a message to be shown on UI.
+     * @return the string response
+     */
+    public String getResponse() {
         return this.response;
     }
 
+    @Override
     public void execute(TaskList tasks, Storage storage, Ui ui) throws DukeException {
         try {
             if (parts.length < 2) {
@@ -44,6 +52,11 @@ public class UnmarkCommand extends Command {
         }
     }
 
+    /**
+     * Unmark multiple tasks.
+     * @param tasks to be edited
+     * @param storage to store the tasks
+     */
     public void massUnmark(TaskList tasks, Storage storage) {
         String content = parts[1];
         String[] indexArray = content.split(",");

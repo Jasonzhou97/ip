@@ -1,6 +1,9 @@
 package duke.main;
+import duke.command.Command;
 import duke.exception.DukeException;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * JavaFX main class that user interacts with
@@ -134,7 +138,14 @@ public class Main extends Application {
             String response = lebum.executeCommand(input);
             if (!response.equals("Oops")) {
                 showMessage("Lebum: " + response, false);
-
+                // Check if the command is an exit command using pattern
+                Command cmd = parser.parse(input);
+                if (cmd.isExit()) {
+                    // Add a short delay to show goodbye message
+                    PauseTransition delay = new PauseTransition(Duration.seconds(1));
+                    delay.setOnFinished(e -> Platform.exit());
+                    delay.play();
+                }
             }
             else {
                 showMessage("Error, please fix your command!", false);
