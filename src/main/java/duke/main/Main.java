@@ -132,12 +132,12 @@ public class Main extends Application {
     private void handleInput() {
         String input = userInput.getText().trim();
         if (!input.isEmpty()) {
-            showMessage("You: " + input, true);
+            showMessage("You: \n" + input, true);
         }
         try {
             String response = lebum.executeCommand(input);
             if (!response.equals("Oops")) {
-                showMessage("Lebum: " + response, false);
+                showMessage("Lebum: \n" + response, false);
                 // Check if the command is an exit command using pattern
                 Command cmd = parser.parse(input);
                 if (cmd.isExit()) {
@@ -175,12 +175,12 @@ public class Main extends Application {
         messageLabel.setStyle(bubbleStyle);
 
         ImageView imageView = new ImageView(isUser ? userImage : lebumImage);
-        // Adjust these values to show full icon
+        // icon size
         imageView.setFitHeight(40);
         imageView.setFitWidth(40);
         imageView.setPreserveRatio(true);
 
-        // Adjust circle clip to match new size
+        // clip size
         javafx.scene.shape.Circle clip = new javafx.scene.shape.Circle(20);
         clip.setCenterX(20);
         clip.setCenterY(20);

@@ -118,12 +118,11 @@ public class AddDeadlineCommand extends Command {
                     throw new DukeException(PAST_DATE_ERROR);
                 }
             } catch (DateTimeParseException e) {
-                // Not a valid datetime format, but we'll accept it as a string
-                // No exception thrown
+                throw new DukeException(e.getMessage());
             }
         }
 
-        // Additional validation if needed
+        // Additional validation
         if (dateTime.length() > MAX_DESCRIPTION_LENGTH) {
             throw new DukeException(MAX_LENGTH_ERROR);
         }
