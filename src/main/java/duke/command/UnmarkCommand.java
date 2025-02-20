@@ -39,7 +39,7 @@ public class UnmarkCommand extends Command {
             else {
                 int unmarkIndex = Integer.parseInt(parts[1]) - 1;
                 Task curTaskUnmark = tasks.array().get(unmarkIndex);
-                response += "You have marked " + curTaskUnmark.getTitle() + " as undone.";
+                response += "You have unmarked " + curTaskUnmark.getTitle() + " as undone.";
                 curTaskUnmark.unmark();
                 storage.saveToFile(tasks);
             }
