@@ -94,7 +94,7 @@ public class Storage {
             return tasks;
         }
         catch (IOException e) {
-            System.out.println("Error occured");
+            System.out.println("Creating file");
         }
         catch (DukeException e) {
             System.out.println("Error parsing tasks");
