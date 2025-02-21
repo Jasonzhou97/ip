@@ -11,7 +11,6 @@ repositories {
 }
 checkstyle {
     toolVersion = '10.2'
-    configFile = rootProject.file("config/checkstyle/checkstyle.xml")
 }
 
 dependencies {
@@ -53,12 +52,6 @@ shadowJar {
     archiveFileName = 'lebum.jar'
     archiveClassifier = null
 
-}
-
-// Configure JavaFX
-javafx {
-    version = '17.0.7'
-    modules = ['javafx.controls', 'javafx.base', 'javafx.graphics', 'javafx.fxml']
 }
 
 // Configure the run task
